@@ -1,9 +1,4 @@
 # SFDX App
+Code for DEX450 Exercises: Visualforce Pages
 
-## Dev, Build and Test
-
-## Resources
-
-## Description of Files and Directories
-
-## Issues
+DEX450 course taken on November 2018
