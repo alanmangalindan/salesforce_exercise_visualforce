@@ -1,0 +1,36 @@
+<!-- Custom search contact page -->
+<apex:page controller="ContactSearch" lightningStylesheets="true">
+    <apex:pageMessages />
+    <apex:form>
+        <apex:pageBlock id="contactList">
+            <apex:inputText value="{!keyword}" />
+            <apex:commandbutton action="{!search}" value="Search Contacts" />
+            <apex:commandButton action="{!moveto}" value="Go to Tab" />
+
+            <apex:commandButton value="|<" title="First" action="{!setcon.first}" disabled="{!NOT(setcon.hasPrevious)}" reRender="contactList"
+            />
+
+            <apex:commandButton value="<" title="Previous" action="{!setcon.previous}" disabled="{!NOT(setcon.hasPrevious)}" reRender="contactList"
+            />
+
+            <apex:commandButton value=">" title="Next" action="{!setcon.next}" disabled="{!NOT(setcon.hasNext)}" reRender="contactList"
+            />
+
+            <apex:commandButton value=">|" title="Last" action="{!setcon.last}" disabled="{!NOT(setcon.hasNext)}" reRender="contactList"
+            />
+
+            <!--                <apex:outputText >
+                      {!(setcon.pageNumber * setcon.pageSize) + 1 - setcon.pageSize}
+                      through
+                      {!IF((setcon.pageNumber * setcon.pageSize) > setcon.resultSize, setcon.resultSize, (setcon.pageNumber * setcon.pageSize))}
+                      of {!setcon.resultSize} records
+                </apex:outputText> -->
+
+            <apex:pageblocktable value="{!cons}" var="c">
+                <apex:column value="{!c.Firstname}" />
+                <apex:column value="{!c.Lastname}" />
+                <apex:column value="{!c.Phone}" />
+            </apex:pageblocktable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
